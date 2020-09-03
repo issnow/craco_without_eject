@@ -12,6 +12,17 @@ const {
 } = require('clean-webpack-plugin');
 
 module.exports = {
+  // 关闭eslint
+  eslint: {
+    enable: false,// 禁用eslint
+    mode: 'file'
+    // enable: true /* (default value) */,
+    // mode: "extends" /* (default value) */ || "file",
+    // configure: { /* Any eslint configuration options: https://eslint.org/docs/user-guide/configuring */ },
+    // configure: (eslintConfig, { env, paths }) => { return eslintConfig; },
+    // loaderOptions: { /* Any eslint-loader configuration options: https://github.com/webpack-contrib/eslint-loader. */ },
+    // loaderOptions: (eslintOptions, { env, paths }) => { return eslintOptions; }
+  },
   webpack: {
     // 在这里配置别名
     alias: {
