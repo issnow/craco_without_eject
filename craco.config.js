@@ -12,7 +12,7 @@ const {
 } = require('clean-webpack-plugin');
 
 module.exports = {
-  // 关闭eslint
+  // eslint配置
   eslint: {
     enable: false,// 禁用eslint
     mode: 'file'
@@ -50,13 +50,12 @@ module.exports = {
       if (process.env.NODE_ENV === 'development') {
         // 配置source_map
         webpackConfig.devtool = 'cheap-module-eval-source-map';
-        let plugins = [
+        webpackConfig.plugins.push(
           // 可视化查看bundle的体积
-          new BundleAnalyzerPlugin(),
-          //热更新插件,和devserver中的hot:true搭配使用
+          // new BundleAnalyzerPlugin(),
+          //热更新插件,和devserver中的hot:true搭配使用,development环境已经开启过了
           // new webpack.HotModuleReplacementPlugin(),
-        ]
-        webpackConfig.plugins.push(...plugins)
+        )
       }
       if(process.env.NODE_ENV === 'production') {
         // cra已经默认压缩css和js了,不用再下载额外的plugin
@@ -100,26 +99,4 @@ module.exports = {
     }
   }],
   // devserver,主要配置代理
-  devServer: (devServerConfig) => {
-    // devServerConfig.port = 5000
-    // return devServerConfig;
-    return {
-      ...devServerConfig,
-      // port: 5000,
-      // open: true,
-      // overlay: false,
-      proxy: {
-        "/api": {
-          target: "http://localhost:6000",
-          // pathRewrite: {"^/api" : ""}
-        },
-        '/get': {
-          target: 'http://localhost:6000',
-          pathRewrite: {
-            '^/get': ''
-          }
-        }
-      }
-    }
-  },
 }
