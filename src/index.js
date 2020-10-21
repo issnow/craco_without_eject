@@ -2,7 +2,7 @@ import React,{StrictMode} from 'react'
 import ReactDOM,{render} from 'react-dom'
 import {HashRouter, Route, Switch, Redirect} from 'react-router-dom'
 import App from '@page'
-import App2 from '@page/02echarts/02demo'
+import App2 from '@page/03table_can_edit/index.jsx'
 import 'antd/dist/antd.css';
 import './app.less'
 

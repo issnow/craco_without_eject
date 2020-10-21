@@ -99,4 +99,14 @@ module.exports = {
     }
   }],
   // devserver,主要配置代理
+  devServer: {
+    proxy: {
+      '/get': {
+        target: 'http://127.0.0.1:4000',
+        pathRewrite: {
+          '^/get': ''
+        }
+      }
+    }
+  }
 }

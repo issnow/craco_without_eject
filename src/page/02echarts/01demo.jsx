@@ -8,6 +8,11 @@ import React, {
 import ReactEcharts from 'echarts-for-react'
 export default (props) => {
   const [chartOpt, setChartOpt] = useState({})
+  useEffect(()=>{
+    fetch('/get/api/book/10/2').then(res=>res.json()).then(res=>{
+      console.log(res, 'fetch')
+    })
+  }, [])
   // 指定图表的配置项和数据
   const getChartOptions = () => {
     setTimeout(() => {

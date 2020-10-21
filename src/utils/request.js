@@ -4,10 +4,22 @@ let instance = axios.create({
   baseURL: '/',
   timeout: 30000,
   withCredentials: true,
-  headers: {'X-Custom-Header': 'foobar'},
+  headers: {
+    'X-Custom-Header': 'foobar',
+    post: {
+      "Content-Type": 'application/json'
+    }
+  },
 });
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
+  console.log(config)
+  if(config.method === 'post') {
+    config.headers = {
+      ...config.headers,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  }
   // 在发送请求之前做些什么
   return config;
 }, function (error) {

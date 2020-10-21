@@ -38,8 +38,28 @@ import React, { useState, useContext, useEffect, useCallback, useMemo, Component
 // }
 
 // import React, { Component } from 'react'
+let ref1
 const styleObj = {color: 'red'}
-const ele = <h1 id='titleBox' className='title' style={{color: 'red'}}>郭成</h1>
+const ele = <div className='a' onClick={()=>{
+  console.log('123123')
+}} style={{color: 'red'}} id='wrap' ref={x=>ref1=x} key='101'>
+  hello world
+  <p className='b'>content1</p>
+  <span className='c'>content2</span>
+</div>
+console.log(ele, 'ele')
+const ele2 = React.createElement("div", {
+  className: "a",
+  id: "wrap",
+  ref(x){ref1 = x},
+  key: "101"
+}, "hello world",React.createElement("p", {
+  className: "b"
+}, "content1"),React.createElement("span", {
+  className: "c"
+}, "content2"));
+console.log(ele2, 'ele2')
+let ele3 = 'hello world'
 export default class jsx extends Component {
   
   render() {
