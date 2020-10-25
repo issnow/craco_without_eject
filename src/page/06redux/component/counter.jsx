@@ -5,13 +5,13 @@ export default class counter extends Component {
   constructor() {
     super()
     this.state = {
-      count: store.getState().count
+      count: store.getState().counter.count
     }
   }
   componentDidMount() {
     this.un = store.subscribe(()=>{
       this.setState({
-        count: store.getState().count
+        count: store.getState().counter.count
       })
     })
   }

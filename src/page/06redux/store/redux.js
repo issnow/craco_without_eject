@@ -18,5 +18,15 @@ function createStore (reducer) {
     subscribe
   }
 }
+// 返回一个新的reducer
+let combineReducers = (reducers)=>{// reducers: {counter:counter,todo: todo}
+  return (state={},action)=>{
+    let obj = {}//最终的状态 {counter:{count:0}, todo: []}
+    for(let key in reducers) {
+      obj[key] = reducers[key](state[key], action)
+    }
+    return obj
+  }
+}
 
-export {createStore}
+export {createStore,combineReducers}
