@@ -10,6 +10,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin');
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   // eslint配置
@@ -61,6 +62,7 @@ module.exports = {
         // cra已经默认压缩css和js了,不用再下载额外的plugin
         // 关闭source map
         webpackConfig.devtool = false;
+        
         // webpackConfig.devtool = 'none';
         // 配置打包后的文件位置
         // config.output.path = path.resolve(__dirname, 'dist');
@@ -107,6 +109,13 @@ module.exports = {
           '^/get': ''
         }
       }
-    }
+    },
+    proxy: (()=>{
+      let obj = {}
+      if(isDev) {
+        obj['/aaa/bbb/ccc'] = 'http://127.0.0.1:8000'
+      }
+      return obj
+    })()
   }
 }
