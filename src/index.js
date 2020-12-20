@@ -1,2 +1,5 @@
 // import './page/09hook-life'
-import './page/10router'
+import '@style/base.less'
+// import './page/10router'
+// import './page/06redux/index.jsx'
+import './page/09react-redux-todo/index.jsx'

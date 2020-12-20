@@ -32,7 +32,8 @@ module.exports = {
       '@component': pathResolve('src/component'),
       '@store': pathResolve('src/store'),
       '@utils': pathResolve('src/utils'),
-      '@service': pathResolve('src/service')
+      '@service': pathResolve('src/service'),
+      '@style': pathResolve('src/style')
     },
     // 也可以在这里配置plugin
     plugins: [
